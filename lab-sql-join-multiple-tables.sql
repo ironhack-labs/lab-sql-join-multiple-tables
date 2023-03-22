@@ -10,7 +10,7 @@ USING (country_id)
 ;
 
 -- 2.Write a query to display how much business, in dollars, each store brought in.
-SELECT s.store_id, CONCAT('$ ', sum(amount)) as TotalBusiness # MISSING DOLLARS
+SELECT s.store_id, CONCAT('$ ', sum(p.amount)) as TotalBusiness 
 FROM sakila.staff staff
 JOIN sakila.store s
 USING (store_id)
@@ -18,7 +18,6 @@ JOIN  sakila.payment p
 USING (staff_id)
 GROUP BY s.store_id;
 ;
-
 
 -- 3.What is the average running time of films by category?
 SELECT  c.name, avg(f.length) as AverageRunningTime
@@ -39,17 +38,17 @@ JOIN sakila.category c
 USING (category_id)
 GROUP BY c.name
 ORDER BY AverageRunningTime DESC
-LIMIT 2;
+LIMIT 3;
 
 -- 5.Display the most frequently rented movies in descending order.
-SELECT f.title, sum(rental_id)
+SELECT f.title, count(rental_id)
 FROM sakila.rental r
 JOIN sakila.inventory i 
 USING (inventory_id)
 JOIN sakila.film f
 USING (film_id)
 GROUP BY 1
-ORDER BY 1 DESC
+ORDER BY 2 DESC
 ;
 
 -- 6. List the top five genres in gross revenue in descending order.
