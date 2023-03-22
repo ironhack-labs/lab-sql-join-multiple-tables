@@ -35,10 +35,10 @@ join film_category c using(category_id)
 join inventory i using(film_id) 
 join rental r using(inventory_id)
 join payment p using(rental_id)
-group by ca.name order by revenue desc;
+group by ca.name order by revenue desc limit 5;
 
 #7. Is "Academy Dinosaur" available for rent from Store 1?
-select f.title as movie, i.store_id as store, r.inventory_id as inventory_id, 
+select f.title as movie, i.store_id as store, r.inventory_id as inventory_id, r.rental_date,
        case 
          when r.return_date is null then 'No' 
          else 'Yes' 
@@ -46,6 +46,5 @@ select f.title as movie, i.store_id as store, r.inventory_id as inventory_id,
        from film f
 join inventory i using(film_id) 
 join rental r using (inventory_id)
-where (f.title="Academy Dinosaur") and (i.store_id=1)
-group by inventory_id;
+where (f.title="Academy Dinosaur") and (i.store_id=1);
 
