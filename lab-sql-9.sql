@@ -81,3 +81,4 @@ JOIN film f ON i.film_id = f.film_id
 WHERE s.store_id = 1
 AND f.title = 'Academy Dinosaur'
 AND i.inventory_id NOT IN (SELECT inventory_id FROM rental);
+
