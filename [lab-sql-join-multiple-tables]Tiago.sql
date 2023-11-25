@@ -91,4 +91,4 @@ left join sakila.store s
 on s.store_id = i.store_id
 where f.title = 'Academy Dinosaur' and s.store_id= 1 
 
-#HE IS AVAILABLE TO RENT IN STORE 1. 
+#HE IS NOT AVAILABLE TO RENT IN STORE 1
