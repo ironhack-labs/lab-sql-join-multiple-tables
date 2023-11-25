@@ -81,7 +81,7 @@ from sakila.rental
 where return_date is null
 ;
 
-select f.title, s.store_id, max(r.return_date)
+select f.title, s.store_id,r.rental_date, r.return_date
 from sakila.film as f
 left join sakila.inventory i
 on f.film_id = i.film_id
@@ -89,6 +89,6 @@ left join sakila.rental r
 on i.inventory_id = r.inventory_id
 left join sakila.store s
 on s.store_id = i.store_id
-where f.title = 'Academy Dinosaur' and s.store_id= 1 
+where f.title = 'Academy Dinosaur' and s.store_id= 1 and r.return_date is null and r.rental_date is not null
 
-#HE IS NOT AVAILABLE TO RENT IN STORE 1
+#HE IS AVAILABLE TO RENT IN STORE 1. 
